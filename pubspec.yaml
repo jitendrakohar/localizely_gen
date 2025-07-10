@@ -1,0 +1,24 @@
+name: localizely_gen
+description: A sample command-line application with basic argument parsing.
+version: 1.0.0
+repository: https://github.com/jitendrakohar/localizely_gen
+homepage: https://www.craftaiapps.com/
+issue_tracker: https://github.com/jitendrakohar/localizely_gen/issues
+
+environment:
+  sdk: ^3.6.0
+
+# Add regular dependencies here.
+dependencies:
+  args: ^2.5.0
+  path: ^1.9.0
+  translator: ^0.1.7
+
+dev_dependencies:
+  lints: ^5.0.0
+  test: ^1.24.0
+
+
+
+executables:
+  localizely_gen: localizely_gen
