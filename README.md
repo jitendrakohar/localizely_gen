@@ -15,7 +15,20 @@
 ---
 
 ## 📦 Installation
+
+### ▶️ From pub.dev
+
+Install globally to use the CLI from anywhere:
+```
+dart pub global activate localizely_gen
+```
+
+### ▶️ From local path (for development)
+
+Install globally to use the CLI from anywhere:
+```
 dart pub global activate --source path .
+```
 
 
 ## Usage

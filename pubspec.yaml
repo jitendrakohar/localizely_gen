@@ -1,6 +1,6 @@
 name: localizely_gen
 description: CLI tool to generate localization files from JSON using Google Translate.
-version: 1.0.1
+version: 1.0.2+1
 repository: https://github.com/jitendrakohar/localizely_gen
 homepage: https://www.craftaiapps.com/
 issue_tracker: https://github.com/jitendrakohar/localizely_gen/issues

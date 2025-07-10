@@ -9,3 +9,6 @@
 
 ## 1.0.1
 - 🎉 update translator plugin of `localizely_gen`
+
+## 1.0.1
+- 🎉 updated documentation
