@@ -1,5 +1,5 @@
 name: localizely_gen
-description: A sample command-line application with basic argument parsing.
+description: CLI tool to generate localization files from JSON using Google Translate.
 version: 1.0.0
 repository: https://github.com/jitendrakohar/localizely_gen
 homepage: https://www.craftaiapps.com/
@@ -12,7 +12,7 @@ environment:
 dependencies:
   args: ^2.5.0
   path: ^1.9.0
-  translator: ^0.1.7
+  translator: ^1.0.3
 
 dev_dependencies:
   lints: ^5.0.0
