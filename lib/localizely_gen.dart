@@ -1,4 +1,3 @@
-
 library localizely_gen;
 
 import 'dart:convert';
@@ -6,8 +5,6 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:translator/translator.dart';
-
-
 
 /// A command-line tool that generates translated localization files from
 /// a base JSON file using Google Translate.
@@ -17,7 +14,6 @@ import 'package:translator/translator.dart';
 class LocalizelyGen {
   /// The GoogleTranslator instance used for performing translations.
   final translator = GoogleTranslator();
-
 
   /// Runs the CLI tool with the provided arguments.
   ///
@@ -31,9 +27,11 @@ class LocalizelyGen {
   /// to the specified directory.
   void run(List<String> arguments) async {
     final parser = ArgParser()
-      ..addOption('input', abbr: 'i', help: 'Path to base JSON file (e.g., en.json)')
+      ..addOption('input',
+          abbr: 'i', help: 'Path to base JSON file (e.g., en.json)')
       ..addOption('output', abbr: 'o', help: 'Output directory')
-      ..addOption('langs', abbr: 'l', help: 'Comma-separated language codes (e.g., es,fr,hi)')
+      ..addOption('langs',
+          abbr: 'l', help: 'Comma-separated language codes (e.g., es,fr,hi)')
       ..addFlag('help', abbr: 'h', negatable: false, help: 'Show usage');
 
     final args = parser.parse(arguments);
@@ -53,20 +51,21 @@ class LocalizelyGen {
       return;
     }
 
-    final Map<String, dynamic> baseJson = jsonDecode(await inputFile.readAsString());
+    final Map<String, dynamic> baseJson =
+        jsonDecode(await inputFile.readAsString());
 
     for (final lang in langs) {
       print('\n🌍 Translating to [$lang]...');
       final translated = await _translateMap(baseJson, lang);
       final outPath = p.join(outputDir, '$lang.json');
       await File(outPath).create(recursive: true);
-      await File(outPath).writeAsString(JsonEncoder.withIndent('  ').convert(translated));
+      await File(outPath)
+          .writeAsString(JsonEncoder.withIndent('  ').convert(translated));
       print('✅ [$lang] Translation complete → saved to: $outPath');
     }
 
     print('\n🎉 All translations completed!');
   }
-
 
   /// Translates the given map of key-value pairs into the specified target language.
   ///
@@ -78,7 +77,8 @@ class LocalizelyGen {
   /// - [toLang]: The target language code (e.g., `'es'`, `'hi'`, `'fr'`).
   ///
   /// Returns a new map with the same keys but translated values.
-  Future<Map<String, String>> _translateMap(Map<String, dynamic> base, String toLang) async {
+  Future<Map<String, String>> _translateMap(
+      Map<String, dynamic> base, String toLang) async {
     final Map<String, String> translated = {};
     final entries = base.entries.toList();
     final total = entries.length;
@@ -91,7 +91,8 @@ class LocalizelyGen {
 
       final results = await Future.wait(batch.map((entry) async {
         try {
-          final result = await translator.translate(entry.value.toString(), to: toLang);
+          final result =
+              await translator.translate(entry.value.toString(), to: toLang);
           return MapEntry(entry.key, result.text);
         } catch (e) {
           print('⚠️ Failed: ${entry.key} → using original.');
