@@ -1,4 +1,3 @@
-// lib/localizely_gen.dart
 
 library localizely_gen;
 
@@ -8,9 +7,28 @@ import 'package:args/args.dart';
 import 'package:path/path.dart' as p;
 import 'package:translator/translator.dart';
 
+
+
+/// A command-line tool that generates translated localization files from
+/// a base JSON file using Google Translate.
+///
+/// This is useful for Flutter or Dart projects needing multi-language support.
+
 class LocalizelyGen {
+  /// The GoogleTranslator instance used for performing translations.
   final translator = GoogleTranslator();
 
+
+  /// Runs the CLI tool with the provided arguments.
+  ///
+  /// Arguments:
+  /// - `--input` / `-i`: path to the base JSON file (e.g., `en.json`)
+  /// - `--output` / `-o`: directory where translated files will be saved
+  /// - `--langs` / `-l`: comma-separated list of target language codes (e.g., `es,fr,hi`)
+  /// - `--help` / `-h`: display help text
+  ///
+  /// Translates the base file into each target language and saves the output
+  /// to the specified directory.
   void run(List<String> arguments) async {
     final parser = ArgParser()
       ..addOption('input', abbr: 'i', help: 'Path to base JSON file (e.g., en.json)')
@@ -49,6 +67,17 @@ class LocalizelyGen {
     print('\n🎉 All translations completed!');
   }
 
+
+  /// Translates the given map of key-value pairs into the specified target language.
+  ///
+  /// Translates in batches to avoid throttling, and logs progress.
+  ///
+  /// If translation fails for a key, the original value is retained.
+  ///
+  /// - [base]: The original localization map (key-value pairs).
+  /// - [toLang]: The target language code (e.g., `'es'`, `'hi'`, `'fr'`).
+  ///
+  /// Returns a new map with the same keys but translated values.
   Future<Map<String, String>> _translateMap(Map<String, dynamic> base, String toLang) async {
     final Map<String, String> translated = {};
     final entries = base.entries.toList();
