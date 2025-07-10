@@ -44,3 +44,10 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 
 Contributions, issues, and feature requests are welcome!  
 Feel free to submit a pull request or open an issue.
+
+
+## ☕ Buy Me a Coffee
+
+If you find this tool helpful and want to support future development, consider [buying me a coffee](https://coff.ee/jitendrakohar05)!
+
+[![Buy Me a Coffee](https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=jitendrakohar05&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff)](https://coff.ee/jitendrakohar05)
